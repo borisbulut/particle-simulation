@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<canvas id="c"></canvas>
+
+<script>
+const ws = new WebSocket("ws://192.168.1.25:8000"); // IP'yi değiştir!
+
+const canvas = document.getElementById("c");
+const ctx = canvas.getContext("2d");
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+ws.onmessage = (event) => {
+    const speeds = event.data.split(" ").map(Number);
+
+    const bins = 30;
+    const hist = new Array(bins).fill(0);
+
+    const max = Math.max(...speeds);
+
+    speeds.forEach(v => {
+        let i = Math.floor(v / max * bins);
+        if (i >= bins) i = bins - 1;
+        hist[i]++;
+    });
+
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+
+    const barWidth = canvas.width / bins;
+
+    hist.forEach((h,i)=>{
+        ctx.fillRect(i*barWidth, canvas.height - h*5, barWidth-2, h*5);
+    });
+};
+</script>
+
+</body>
+</html>
