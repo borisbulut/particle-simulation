@@ -17,7 +17,7 @@
                 "-lglfw3dll",
                 "-lws2_32",
                 "-o",
-                "${fileDirname}\\${fileBasenameNoExtension}.exe"
+                "${fileDirname}\\${simulation}.exe"
             ],
             "options": {
                 "cwd": "${fileDirname}"
