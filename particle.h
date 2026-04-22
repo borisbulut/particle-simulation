@@ -7,7 +7,7 @@ struct Particle{
     float mass;
     int history = 0;
 
-    Particle(float x, float y, float z, float vx, float vy, float vz) : pos(x,y,z), v(vx,vy,vz), mass(generate(2.0f,10.0f)) {}
+    Particle(float x, float y, float z, float vx, float vy, float vz) : pos(x,y,z), v(vx,vy,vz), mass(generate(0.1f,5.0f)) {}
     
 
     

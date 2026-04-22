@@ -11,7 +11,7 @@ Render render;
 
 std::vector<float> speeds;
 std::vector<float> positions;
-int N = 100;
+int N = 5000;
 std::vector<Particle> particles;
 void init_particles() {
     for(int i = 0; i < N ; ++i) {

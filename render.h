@@ -15,7 +15,7 @@ class Render{
     unsigned int viewLoc;
     unsigned int projLoc;
     std::vector<float> vertices;
-    int max_particle = 5000;
+    int max_particle = 2000;
     float radius = 4.0f;
     float camX;
     float camZ;
