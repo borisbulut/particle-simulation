@@ -12,6 +12,7 @@
                 "-I${fileDirname}\\include",
                 "-I${fileDirname}\\include\\GLFW",
                 "-I${fileDirname}\\include\\glad",
+                "-I${fileDirname}\\include\\glm",
                 "-L${fileDirname}\\lib",
                 "-lglfw3dll",
                 "-lws2_32",

@@ -1,13 +1,13 @@
 #include "vec.h"
 
 struct Particle{
-    vec2 pos, v;
+    vec3 pos, v;
     float size= 0.01;
     float dt = 0.01;
     float mass;
     int history = 0;
 
-    Particle(float x, float y, float vx, float vy) : pos(x,y), v(vx,vy), mass(generate(2.0f,10.0f)) {}
+    Particle(float x, float y, float z, float vx, float vy, float vz) : pos(x,y,z), v(vx,vy,vz), mass(generate(2.0f,10.0f)) {}
     
 
     
@@ -17,11 +17,11 @@ struct Particle{
    
     void collision(Particle& p2){
         
-        vec2 r = (pos-p2.pos);
-        vec2 r2 = (p2.pos-pos);
+        vec3 r = (pos-p2.pos);
+        vec3 r2 = (p2.pos-pos);
 
-        vec2 v1 = v;
-        vec2 v2 = p2.v;
+        vec3 v1 = v;
+        vec3 v2 = p2.v;
 
         float R = r.magnitude();
         float sizes = size + p2.size;
@@ -76,6 +76,20 @@ struct Particle{
     {   
         v.y = -v.y; 
         pos.y = 1.0;  
+    }
+
+    // +Z
+    if (pos.z < -1.0)
+    {   
+        v.z = -v.z;   
+        pos.z = -1.0;     
+    }
+
+    // -Z
+    if (pos.z > 1.0)
+    {   
+        v.z = -v.z; 
+        pos.z = 1.0;  
     }
     
 }

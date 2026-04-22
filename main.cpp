@@ -15,20 +15,22 @@ int N = 100;
 std::vector<Particle> particles;
 void init_particles() {
     for(int i = 0; i < N ; ++i) {
-    particles.emplace_back(generate(),generate(),generate(-2,2),generate(-2,2));
+    particles.emplace_back(generate(),generate(),generate(),generate(-2,2),generate(-2,2),generate(-2,2));
 }
 }
 
 //_____END OF INITIALIZATION____________________
 
 int main(){
-
+    
     init_particles();
     glEnable(GL_PROGRAM_POINT_SIZE);
+    render.update();
     while(!glfwWindowShouldClose(engine.window)){
         
         engine.run();
-    
+        glfwSetScrollCallback(engine.window, engine.scroll_callback);
+
     // HANDLE MOVEMENT
     for (auto& p : particles) {
         p.velocity();
@@ -48,6 +50,8 @@ int main(){
     }    
       
     // DRAW
+    render.rotate();
+    render.zoom(engine.fov);
     render.draw(particles);
     // SEND DATA TO PYTHON
     send_data(speeds);

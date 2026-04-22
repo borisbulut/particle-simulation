@@ -59,3 +59,48 @@ class vec2{
 vec2 operator*(float lhs, vec2& vec){
     return vec*lhs;
 }
+
+
+class vec3{
+    public:
+    float x, y, z;
+    
+    public:
+    vec3(float x, float y, float z) : x(x), y(y), z(z) {}
+
+    vec3 operator+(const vec3& vec) {
+        return vec3(x+vec.x, y+vec.y, z+vec.z);
+    }
+
+    vec3 operator-(const vec3& vec) {
+        return vec3(x-vec.x, y-vec.y, z-vec.z);
+    }
+
+    void operator=(const vec3& vec) {
+        x = vec.x;
+        y = vec.y;
+        z = vec.z;
+    }
+
+    float operator*(const vec3& vec) {
+        return x*vec.x+y*vec.y+z*vec.z;
+    }
+    
+
+    vec3 operator*(const float num) {
+        return vec3(x*num,y*num,z*num);
+    }
+
+    float magnitude() const {
+        return std::sqrtf(x*x+y*y+z*z);
+    }
+
+    float magnitudes() const {
+        return (x*x+y*y+z*z);
+    }
+
+};
+
+vec3 operator*(float lhs, vec3& vec){
+    return vec*lhs;
+}
