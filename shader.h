@@ -1,3 +1,6 @@
+#ifndef SHADER_H
+#define SHADER_H
+
 #include <iostream>
 #include <sstream>
 #include <fstream>
@@ -99,3 +102,5 @@ class Shader{
     }
 
 };
+
+#endif
