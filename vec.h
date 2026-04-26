@@ -1,106 +1,46 @@
+#ifndef VEC_H
+#define VEC_H
+
 #include <cmath>
 #include <random>
 
-static float generate(float range0, float range1){
-        static std::random_device rd;
-        static std::mt19937 gen(rd());  // Mersenne Twister engine
-        std::uniform_real_distribution<float> dist(range0, range1);
-        return dist(gen);
-    };
-static float generate(){
-        return generate(-1.0f,1.0f);
-    };
+float generate(float range0, float range1);
+float generate();
 
 
-class vec2{
+class Vec2{
     public:
     float x, y;
-    
+        
     public:
-    vec2(float x, float y) : x(x), y(y) {}
-
-    vec2 operator+(const vec2& vec) {
-        return vec2(x+vec.x, y+vec.y);
-    }
-
-    vec2 operator-(const vec2& vec) {
-        return vec2(x-vec.x, y-vec.y);
-    }
-
-    void operator=(const vec2& vec) {
-        x = vec.x;
-        y = vec.y;
-    }
-
-    float operator*(const vec2& vec) {
-        return x*vec.x+y*vec.y;
-    }
-    
-
-    vec2 operator*(const float num) {
-        return vec2(x*num,y*num);
-    }
-
-    float magnitude() const {
-        return std::sqrtf(x*x+y*y);
-    }
-
-    float magnitudes() const {
-        return (x*x+y*y);
-    }
-
-    float angle() const {
-        return std::atan(y/x);
-    }
-
-   
+    Vec2(float x, float y);
+    Vec2 operator+(const Vec2& vec);
+    Vec2 operator-(const Vec2& vec);
+    void operator=(const Vec2& vec);
+    float operator*(const Vec2& vec);
+    Vec2 operator*(const float num);
+    float magnitude() const;
+    float magnitudes() const;
+    float angle() const;
 };
 
-vec2 operator*(float lhs, vec2& vec){
-    return vec*lhs;
-}
+Vec2 operator*(float lhs, Vec2& vec);
 
 
-class vec3{
+class Vec3{
     public:
     float x, y, z;
     
     public:
-    vec3(float x, float y, float z) : x(x), y(y), z(z) {}
-
-    vec3 operator+(const vec3& vec) {
-        return vec3(x+vec.x, y+vec.y, z+vec.z);
-    }
-
-    vec3 operator-(const vec3& vec) {
-        return vec3(x-vec.x, y-vec.y, z-vec.z);
-    }
-
-    void operator=(const vec3& vec) {
-        x = vec.x;
-        y = vec.y;
-        z = vec.z;
-    }
-
-    float operator*(const vec3& vec) {
-        return x*vec.x+y*vec.y+z*vec.z;
-    }
-    
-
-    vec3 operator*(const float num) {
-        return vec3(x*num,y*num,z*num);
-    }
-
-    float magnitude() const {
-        return std::sqrtf(x*x+y*y+z*z);
-    }
-
-    float magnitudes() const {
-        return (x*x+y*y+z*z);
-    }
-
+    Vec3(float x, float y, float z);
+    Vec3 operator+(const Vec3& vec);
+    Vec3 operator-(const Vec3& vec);
+    void operator=(const Vec3& vec);
+    float operator*(const Vec3& vec);
+    Vec3 operator*(const float num);
+    float magnitude() const;
+    float magnitudes() const;
 };
+Vec3 operator*(float lhs, Vec3& vec);
 
-vec3 operator*(float lhs, vec3& vec){
-    return vec*lhs;
-}
+#endif

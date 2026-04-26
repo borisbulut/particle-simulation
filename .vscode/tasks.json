@@ -7,7 +7,7 @@
             "args": [
                 "-fdiagnostics-color=always",
                 "-g",
-                "main.cpp", "engine.cpp",
+                "main.cpp", "engine.cpp", "vec.cpp",
                 "glad.c",
                 "-I${fileDirname}\\include",
                 "-I${fileDirname}\\include\\GLFW",
